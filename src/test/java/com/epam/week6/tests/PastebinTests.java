@@ -7,6 +7,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import com.epam.week6.pages.PastebinHomePage;
 import com.epam.week6.pages.PastebinPage;
+import com.epam.week6.pages.BasePage;
 
 public class PastebinTests extends BaseTest {
 	
@@ -39,8 +40,7 @@ public class PastebinTests extends BaseTest {
 		pastebinHomePage.enterPasteName(pasteName);
 		pastebinHomePage.clickOnCreateNewPasteButton();
 		
-		new WebDriverWait(driver, Duration.ofSeconds(5)).until(
-				ExpectedConditions.titleContains(pasteName));
+		new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.titleIs(pasteName));
 		
 		Assert.assertTrue(driver.getTitle().contains(pasteName), 
 				"Title of the page is different than the title of the paste");
